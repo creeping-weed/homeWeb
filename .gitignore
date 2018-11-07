@@ -9,9 +9,6 @@
 # production
 /build
 
-# serverApi
-/myapi
-
 # misc
 .DS_Store
 .env.local
