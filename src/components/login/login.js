@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import '../css/login.css'
+import './login.css'
 import { Input, Button } from 'semantic-ui-react'
 class Login extends React.Component {
   constructor(props) {
@@ -18,12 +18,10 @@ class Login extends React.Component {
   login = async () => {
     const { uname, pwd } = this.state
     const res = await axios.post('/users/login', { uname, pwd })
-    console.log(res)
     const { data, meta } = res
     if (meta.status === 200) {
-      console.log(data)
       localStorage.setItem('token', data.token)
-      this.props.history.push('/home')
+      this.props.history.push('/main/home')
     }
   }
   render() {

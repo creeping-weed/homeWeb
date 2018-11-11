@@ -1,0 +1,47 @@
+@charset "utf-8";
+.main {
+  padding-bottom: 70px;
+  .info {
+    background-color: #fff;
+  }
+  .footer {
+    // background-color: red;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    .link {
+      width: 25%;
+      box-sizing: border-box;
+      border-right: 1px solid #ccc;
+      border-top: 1px solid #eee;
+      height: 100%;
+      float: left;
+      text-align: center;
+      &:last-child {
+        border-right: none;
+      }
+      div {
+        height: 40px;
+        font-size: 28px;
+        line-height: 40px;
+        color: #999;
+      }
+      a {
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        color: #999;
+      }
+    }
+    .active {
+      div {
+        color: orange;
+      }
+      a {
+        color: orange;
+      }
+    }
+  }
+}
