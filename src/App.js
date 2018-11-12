@@ -8,7 +8,13 @@ import Login from './components/login/login'
 import main from './components/main/main'
 // axios的配置
 axios.defaults.baseURL = 'http://localhost:8086'
-// 添加一个响应拦截器
+// 添加拦截器
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = localStorage.getItem('token')
+  return config
+}, error => {
+  return Promise.reject(error)
+})
 axios.interceptors.response.use(res => {
   return res.data
 }, error => {
