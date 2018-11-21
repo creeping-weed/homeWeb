@@ -16,6 +16,10 @@ class Home extends Component {
       active: true
     }
   }
+  go(name) {
+    console.log(name)
+    this.props.history.push('/main/menu/' + name)
+  }
   // 获取轮播图数据  
   async getSwipeImage() {
     const res = await axios.post('/homes/swipe')
@@ -96,6 +100,7 @@ class Home extends Component {
     this.getInfo()
     this.getQuestion()
     this.getHouse()
+    console.log(this.props)
   }
   render() {
     return (
@@ -112,7 +117,9 @@ class Home extends Component {
               <Grid.Row>
                 {this.state.nav.slice(0, 4).map(item => {
                   return (
-                    <Grid.Column key={item.id}>
+                    <Grid.Column key={item.id} onClick={(e) => {
+                      this.go(item.id, e)
+                    }}>
                       <div className="icon" style={{ backgroundColor: item.bgColor }}>
                         <Icon disabled name='home' />
                       </div>
@@ -124,7 +131,7 @@ class Home extends Component {
               <Grid.Row>
                 {this.state.nav.slice(4).map(item => {
                   return (
-                    <Grid.Column key={item.id}>
+                    <Grid.Column key={item.id} onClick={this.go.bind(this, item.id)}>
                       <div className="icon" style={{ backgroundColor: item.bgColor }}>
                         <Icon disabled name='home' />
                       </div>

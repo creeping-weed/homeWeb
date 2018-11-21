@@ -6,6 +6,7 @@ import home from '../home/home'
 import find from '../find/find'
 import chat from '../chat/chat'
 import my from '../my/my'
+import navList from '../navList/navList'
 class DiyLink extends Component {
   constructor(props) {
     super(props)
@@ -33,8 +34,32 @@ class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      active: '1'
+      active: ''
     }
+  }
+  componentDidMount() {
+    // console.log(this.props.location.pathname)
+    const { pathname } = this.props.location
+    let active = '1'
+    switch (pathname) {
+      case '/main/home':
+        active = '1'
+        break
+      case '/main/find':
+        active = '2'
+        break
+      case '/main/chat':
+        active = '3'
+        break
+      case '/main/my':
+        active = '4'
+        break
+      default:
+        active = '1'
+    }
+    this.setState({
+      active
+    })
   }
   changeActive = (active) => {
     this.setState({
@@ -50,6 +75,7 @@ class Main extends Component {
             <Route path="/main/find" component={find} />
             <Route path="/main/chat" component={chat} />
             <Route path="/main/my" component={my} />
+            <Route path="/main/menu/:id" component={navList} />
             <Redirect to="/main/home" />
           </Switch>
         </div>
